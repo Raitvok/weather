@@ -9,6 +9,13 @@ import './App.css';
 const API_KEY = "a006d87ff8a4eb3b5e480e9bf8cd5912";
 
 class App extends Component {
+    state = {
+        temp: undefined,
+        city: undefined,
+        humidity: undefined,
+        description: undefined,
+        error: undefined
+    };
     getWather = async (e) => {
         e.preventDefault();
         const city = e.target.elements.city.value;
@@ -17,15 +24,29 @@ class App extends Component {
 
         const data = await api_call.json();
         console.log(data);
-    }
-
+        this.setState({
+            temp: data.main.temp,
+            city: data.name,
+            humidity: data.main.humidity,
+            description: data.weather[0].description,
+            error: ""
+        })
+    };
 
     render() {
         return (
             <div>
                 <Header/>
-                <Form getWeather = {this.getWather} />
-                <Weather/>
+                <Form getWeather={this.getWather}/>
+                <Weather
+                    temp={this.state.temp}
+                    city={this.state.city}
+                    country={this.state.country}
+                    humidity={this.state.humidity}
+                    description={this.state.description}
+                    error={this.state.error}
+
+                />
             </div>
         );
     }
