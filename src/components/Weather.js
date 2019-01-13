@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
+import "../styles/index.css"
 
 class Weather extends Component {
-    render() {
-        return (
-            <div>
-                {this.props.city && <p>location:  {this.props.city}</p>}
-                {this.props.temp && <p>temerature:  {this.props.temp}</p>}
-                {this.props.humidity && <p>humidity: {this.props.humidity}</p>}
-                {this.props.description && <p>description: {this.props.description}</p>}
-            </div>
-        )
-    }
+  render() {
+    return (
+      <article id="pageWeather">
+        <p>temperature: {Math.round(this.props.temp) + "º"}</p>
+        <p>humidity: {this.props.humidity + "%"}</p>
+        <p>description: {this.props.description}</p>
+      </article>
+    )
+  }
 }
 
 export default Weather;

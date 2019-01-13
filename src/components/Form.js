@@ -1,14 +1,17 @@
+/*
+
 import React, {Component} from 'react';
 
-class Form extends Component {
+class Search extends Component {
     render() {
         return (
-            <form onSubmit={this.props.getWeather}>
+            <Search onSubmit={this.props.myWeather}>
                 <input type="text" placeholder="City" name="city"/>
                 <button>Search</button>
-            </form>
+            </Search>
         )
     }
 }
 
-export default Form;
+export default Search;
+*/

@@ -1,0 +1,58 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display:grid;
+  grid-template-areas:
+      "header header"
+      "nav article"
+      "footer footer";
+  grid-template-rows: 200px 5fr;
+  grid-template-columns: 1fr 5fr;
+  height: 100vh;
+  font-size: 2vw;
+}
+
+#pageHeader {
+  grid-area: header;
+}
+
+#pageNav {
+  grid-area: nav;
+}
+
+#pageWeather {
+  grid-area: article;
+}
+
+#pageFooter {
+  grid-area: footer;
+}
+
+header, nav, article, footer {
+  padding: 5px;
+}
+
+header {
+  background: gold;
+}
+
+nav {
+  background: darkseagreen;
+}
+
+article {
+  background: lightblue;
+}
+
+footer {
+  background: rebeccapurple;
+}
+
