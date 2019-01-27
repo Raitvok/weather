@@ -3,11 +3,11 @@ import HeaderLogo from "./HeaderLogo"
 import HeaderSearch from "./HeaderSearch";
 import MainCountryName from "./MainCountryName";
 import MainWeather from "./MainWeather";
+import OneDay from "./OneDay";
 import Footer from "./Footer";
 import {parsing} from "./service"
 import '../styles/App.css';
 import "../styles/pageHeader.css"
-
 
 const APIXU_URL = "http://api.apixu.com/v1/forecast.json?key=";
 const APIXU_KEY = "e43c959d9fab421dbab160905192001";
@@ -29,61 +29,65 @@ class App extends Component {
       });
    }
 
-//TODO здесь есть проблема, не отсылает запрос в srvice
-
    getWather = async (e) => {
       e.preventDefault();
       const CITY = e.target.elements.city.value;
 
       const api_call = await fetch(`${APIXU_URL}${APIXU_KEY}&q=${CITY}&days=${DAYS}`);
+      const api_weather = await api_call.json();
 
       if (CITY) {
-         const api_weather = await api_call.json();
          this.setState({
             data: parsing(api_weather)
          })
       }
+
    };
 
    render() {
       if (!this.state.data) {
-         return  (
+         return (
             <h1>Loading...</h1>
-         )} else {
-      return (
-         <Fragment>
+         )
+      } else {
 
-            <header className="pageHeader">
+         return (
+            <Fragment>
 
-               <HeaderLogo/>
-               <HeaderSearch myWeather={this.getWather}/>
+               <header className="pageHeader">
 
-            </header>
+                  <HeaderLogo/>
+                  <HeaderSearch myWeather={this.getWather}/>
 
-            <main className="pageMain">
+               </header>
 
-               <MainCountryName
-                  city={this.state.data[0].city}
-                  country={this.state.data[0].country}
-                  code={this.state.data[1].description_code}
-               />
+               <main className="pageMain">
 
-               <MainWeather
-                  day={this.state.data[1].day}
-                  dateDay={this.state.data[1].dateDay}
-                  avgtemp={this.state.data[1].avgtemp}
-                  maxtemp={this.state.data[1].maxtemp}
-                  mintemp={this.state.data[1].mintemp}
-                  humidity={this.state.data[1].humidity}
-                  description_text={this.state.data[1].description_text}
-               />
+                  <MainCountryName
+                     city={this.state.data[0].city}
+                     country={this.state.data[0].country}
+                     code={this.state.data[1].description_code}
+                  />
 
-            </main>
+                  <MainWeather
+                     day={this.state.data[1].day}
+                     dateDay={this.state.data[1].dateDay}
+                     avgtemp={this.state.data[1].avgtemp}
+                     maxtemp={this.state.data[1].maxtemp}
+                     mintemp={this.state.data[1].mintemp}
+                     humidity={this.state.data[1].humidity}
+                     description_text={this.state.data[1].description_text}
+                  />
 
-            <Footer className="pageFooter"/>
-         </Fragment>
-      )
-   }
+                  <div>
+                     <OneDay data={this.state.data}/>
+                  </div>
+               </main>
+
+               <Footer className="pageFooter"/>
+            </Fragment>
+         )
+      }
    }
 }
 

@@ -6,13 +6,29 @@ export const parsing = (api_weather) => {
 
    const arrayWeather = api_weather.forecast.forecastday;
 
-   let weatherWeek = [];
+   const weatherWeek = [];
+   const days = [];
+
    let location = {
       city: api_weather.location.name,
       country: api_weather.location.country
    };
 
+   let current = {
+      dateDay: arrayWeather[0].date,
+      day: parseDays(date.getDay()),
+      maxtemp: Math.round(arrayWeather[0].day.maxtemp_c),
+      avgtemp: Math.round(arrayWeather[0].day.avgtemp_c),
+      mintemp: Math.round(arrayWeather[0].day.mintemp_c),
+      humidity: Math.round(arrayWeather[0].day.avghumidity),
+      visible_km: Math.round(Number(arrayWeather[0].day.avgvis_km)),
+      description_text: arrayWeather[0].day.condition.text,
+      description_code: parseImg(arrayWeather[0].day.condition.code)
+   };
+
    weatherWeek.push(location);
+   weatherWeek.push(current);
+   weatherWeek.push(days);
 
    let dateDay = "";
    let maxtemp = null;
@@ -23,7 +39,7 @@ export const parsing = (api_weather) => {
    let description_text = "";
    let description_code = null;
 
-   for (let i = 0; i < arrayWeather.length; i++) {
+   for (let i = 1; i < arrayWeather.length; i++) {
       const dateUTC = new Date(arrayWeather[i].date);
       const numOfDay = dateUTC.getDay();
       const day = dateUTC.getUTCDate();
@@ -38,8 +54,8 @@ export const parsing = (api_weather) => {
          description_text = arrayWeather[i].day.condition.text;
          description_code = arrayWeather[i].day.condition.code;
 
-         if (itemsForCurrentDay !== 8) {
-            weatherWeek.push({
+         if (itemsForCurrentDay !== 2) {
+            days.push({
                day: parseDays(numOfDay),
                dateDay: dateDay,
                maxtemp: maxtemp,
@@ -90,3 +106,11 @@ const parseDays = (param) => {
       }
    }
 };
+
+const parseImg = (param) => {
+   switch (param) {
+      case 1147: {
+         return "img1";
+      }
+   }
+}
