@@ -1,62 +1,45 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  padding: 0;
+	font-family:             -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+							 "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+							 sans-serif;
+	-webkit-font-smoothing:  antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin:                  0;
+	padding:                 0;
 }
 
 main {
-  display:grid;
-  grid-template-areas:
-      "header header"
-      "nav article"
-      "footer footer";
-  grid-template-rows: 200px 5fr;
-  grid-template-columns: 1fr 5fr;
-  height: 100vh;
-  font-size: 2vw;
+	display:               grid;
+	grid-template-areas:   "header header"
+						   "main main"
+						   "footer footer";
+	grid-template-rows:    1fr 7fr;
+	grid-template-columns: 1fr 4fr;
+	height:                100vh;
+	font-size:             2vw;
 }
 
-#pageHeader {
-  grid-area: header;
+.pageHeader {
+	grid-area: header;
 }
 
-#pageNav {
-  grid-area: nav;
+.pageMain {
+	grid-area: main;
 }
 
-#pageWeather {
-  grid-area: article;
-}
-
-#pageFooter {
-  grid-area: footer;
-}
-
-header, nav, article, footer {
-  padding: 20px;
-}
-
-header {
-  background: gold;
-}
-
-nav {
-  background: darkseagreen;
-}
-
-article {
-  background: lightblue;
+.pageFooter {
+	grid-area: footer;
 }
 
 footer {
-  background: rebeccapurple;
+	background: #067EB2;
+	color:      #ffffff;
 }
 
-
-search {
-  background: blue;
+main {
+	background: rgba(6, 126, 178, 1);
+	background: -webkit-linear-gradient(left, rgba(6, 126, 178, 1) 29%, rgba(63, 138, 225, 0.93) 35%, rgba(0, 102, 235, 0.98) 77%, rgba(0, 102, 235, 1) 100%);
+	background: -o-linear-gradient(to right, rgba(0, 102, 235, 1) 2%, rgba(0, 102, 235, 0.98) 30%, rgba(6, 126, 178, 1) 60%);
+	background: -ms-linear-gradient(to right, rgba(0, 102, 235, 1) 2%, rgba(0, 102, 235, 0.98) 30%, rgba(6, 126, 178, 1) 60%);
+	background: linear-gradient(to right, rgba(0, 102, 235, 1) 2%, rgba(0, 102, 235, 0.98) 30%, rgba(6, 126, 178, 1) 60%);
 }

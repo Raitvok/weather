@@ -1,0 +1,22 @@
+.pageHeader {
+	display:         flex;
+	justify-content: center;
+	align-items:     center;
+	text-transform:  uppercase;
+	color:           #ffffff;
+	background:      #067EB2;
+
+}
+
+.header__search {
+	margin: 0 0 0 20px;
+}
+
+.header__search__input {
+	width:  50vw;
+	height: 4vh;
+}
+
+.header__search__input:focus {
+	border: 3px solid #555;
+}

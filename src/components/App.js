@@ -1,132 +1,88 @@
-import React, {Component} from 'react';
-
-import Tittle from "./Tittle";
-import Weather from "./Weather";
-import Search from "./Search";
-
-/*-----ROUTING---------TODO*/
-
-import {AppRouting} from "./router/Navigation"
-
+import React, {Component, Fragment} from 'react'
+import HeaderLogo from "./HeaderLogo"
+import HeaderSearch from "./HeaderSearch";
+import MainCountryName from "./MainCountryName";
+import MainWeather from "./MainWeather";
+import Footer from "./Footer";
+import {parsing} from "./service"
 import '../styles/App.css';
+import "../styles/pageHeader.css"
 
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-import "../styles/navigation.css"
 
-import Current from "./router/Current.component"
-import OneDay from "./router/OneDay.component"
-import ThreeDays from "./router/ThreeDays.component"
-
-/*---------------*/
-
-const API_KEY = "a006d87ff8a4eb3b5e480e9bf8cd5912";
+const APIXU_URL = "http://api.apixu.com/v1/forecast.json?key=";
+const APIXU_KEY = "e43c959d9fab421dbab160905192001";
+const DAYS = "7";
 
 class App extends Component {
-  state = {
-    temp: undefined,
-    city: undefined,
-    country: undefined,
-    humidity: undefined,
-    description: undefined,
-    error: undefined
-  };
+   state = {
+      data: null,
+      error: null
+   };
 
-  async componentDidMount() {
-    const city = "Minsk";
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}&units=metric`);
+   async componentDidMount() {
+      const CITY = "Minsk";
+      const api_call = await fetch(`${APIXU_URL}${APIXU_KEY}&q=${CITY}&days=${DAYS}`);
+      const api_weather = await api_call.json();
 
-    const data = await api_call.json();
-
-    this.setState({
-      temp: data.main.temp,
-      city: data.name,
-      country: data.sys.country,
-      humidity: data.main.humidity,
-      description: data.weather[0].description,
-      error: ""
-    })
-
-  }
-
-  getWather = async (e) => {
-    e.preventDefault();
-    const city = e.target.elements.city.value;
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}&units=metric`);
-
-    const data = await api_call.json();
-
-    if (city) {
-      console.log(data);
       this.setState({
-        temp: data.main.temp,
-        city: data.name,
-        country: data.sys.country,
-        humidity: data.main.humidity,
-        description: data.weather[0].description,
-        error: ""
-      })
-    } else {
-      this.setState({
-        temp: undefined,
-        city: undefined,
-        country: undefined,
-        humidity: undefined,
-        description: undefined,
-        error: "Enter current value"
+         data: parsing(api_weather)
+      });
+   }
 
-      })
-    }
-  }
+//TODO здесь есть проблема, не отсылает запрос в srvice
 
-  render() {
-    return (
-      <main>
+   getWather = async (e) => {
+      e.preventDefault();
+      const CITY = e.target.elements.city.value;
 
-        <header id="pageHeader">
-          <Search myWeather={this.getWather}/>
-          <Tittle
-            city={this.state.city}
-            country={this.state.country}
-          />
-        </header>
+      const api_call = await fetch(`${APIXU_URL}${APIXU_KEY}&q=${CITY}&days=${DAYS}`);
+      const api_weather = await api_call.json();
 
-        <article id="pageWeather">
-          <Weather
-            temp={this.state.temp}
-            humidity={this.state.humidity}
-            description={this.state.description}
-            error={this.state.error}
-          />
-        </article>
+      if (CITY) {
+         this.setState({
+            data: parsing(api_weather)
+         })
+      }
+   };
 
-        <footer id='pageFooter'>
-          <div>
-            where is footer
-          </div>
-        </footer>
+   render() {
+      if (!this.state.data) {
+         return  (
+            <h1>Loading...</h1>
+         )} else {
+      return (
+         <Fragment>
 
-      <navigation id="pageNav">
+            <header className="pageHeader">
 
-        <Router>
-          <div>
-            <div className="weather">
-              <Link to="/">Current</Link>
-              <Link to="/oneday">1 day</Link>
-              <Link to="/threedays">3 days</Link>
-            </div>
-            <div>
-              <Route exact path="/" component={Current}/>
-              <Route path="/oneday" component={OneDay}/>
-              <Route path="/threedays" component={ThreeDays}/>
-            </div>
-          </div>
-        </Router>
+               <HeaderLogo/>
+               <HeaderSearch myWeather={this.getWather}/>
 
-      </navigation>
+            </header>
 
-      </main>
-    )
-  }
+            <main className="pageMain">
+
+               <MainCountryName
+                  city={this.state.city}
+                  country={this.state.country}
+               />
+               <MainWeather
+                  avgtemp={this.state.avgtemp}
+                  humidity={this.state.humidity}
+                  description_text={this.state.description_text}
+                  maxtemp={this.state.maxtemp}
+                  mintemp={this.state.mintemp}
+                  day={this.state.day}
+                  dateDay={this.state.dateDay}
+               />
+
+            </main>
+
+            <Footer className="pageFooter"/>
+         </Fragment>
+      )
+   }
+   }
 }
 
 export default App;

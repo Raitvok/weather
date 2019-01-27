@@ -1,0 +1,4 @@
+.pageMain {
+	display: flex;
+	flex-flow: row;
+}
