@@ -47,7 +47,7 @@ class App extends Component {
    render() {
       if (!this.state.data) {
          return (
-            <h1>Loading...</h1>
+            <h1 className="loader">Loading...</h1>
          )
       } else {
 
@@ -79,9 +79,7 @@ class App extends Component {
                      description_text={this.state.data[1].description_text}
                   />
 
-                  <div>
-                     <OneDay data={this.state.data}/>
-                  </div>
+                  <OneDay data={this.state.data}/>
                </main>
 
                <Footer className="pageFooter"/>
