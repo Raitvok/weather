@@ -36,9 +36,9 @@ class App extends Component {
       const CITY = e.target.elements.city.value;
 
       const api_call = await fetch(`${APIXU_URL}${APIXU_KEY}&q=${CITY}&days=${DAYS}`);
-      const api_weather = await api_call.json();
 
       if (CITY) {
+         const api_weather = await api_call.json();
          this.setState({
             data: parsing(api_weather)
          })
@@ -63,17 +63,19 @@ class App extends Component {
             <main className="pageMain">
 
                <MainCountryName
-                  city={this.state.city}
-                  country={this.state.country}
+                  city={this.state.data[0].city}
+                  country={this.state.data[0].country}
+                  code={this.state.data[1].description_code}
                />
+
                <MainWeather
-                  avgtemp={this.state.avgtemp}
-                  humidity={this.state.humidity}
-                  description_text={this.state.description_text}
-                  maxtemp={this.state.maxtemp}
-                  mintemp={this.state.mintemp}
-                  day={this.state.day}
-                  dateDay={this.state.dateDay}
+                  day={this.state.data[1].day}
+                  dateDay={this.state.data[1].dateDay}
+                  avgtemp={this.state.data[1].avgtemp}
+                  maxtemp={this.state.data[1].maxtemp}
+                  mintemp={this.state.data[1].mintemp}
+                  humidity={this.state.data[1].humidity}
+                  description_text={this.state.data[1].description_text}
                />
 
             </main>

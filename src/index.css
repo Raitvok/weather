@@ -10,13 +10,14 @@ body {
 
 main {
 	display:               grid;
-	grid-template-areas:   "header header"
-						   "main main"
-						   "footer footer";
-	grid-template-rows:    1fr 7fr;
+	grid-template-areas:   "header header header header header header"
+						   "main main main main main main"
+						   "footer footer footer footer footer footer";
+	grid-template-rows:    repeat(7,1fr);
 	grid-template-columns: 1fr 4fr;
-	height:                100vh;
 	font-size:             2vw;
+	height:                90vh;
+
 }
 
 .pageHeader {

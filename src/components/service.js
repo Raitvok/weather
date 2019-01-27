@@ -47,7 +47,7 @@ export const parsing = (api_weather) => {
                mintemp: mintemp,
                humidity: humidity,
                visible_km: visible_km,
-               descritption_text: description_text,
+               description_text: description_text,
                description_code: description_code
             });
 

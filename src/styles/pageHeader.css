@@ -8,13 +8,11 @@
 
 }
 
-.header__search {
-	margin: 0 0 0 20px;
-}
-
 .header__search__input {
 	width:  50vw;
 	height: 4vh;
+	margin: 0 0 0 20px;
+
 }
 
 .header__search__input:focus {
