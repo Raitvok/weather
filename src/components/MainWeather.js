@@ -10,7 +10,7 @@ const MainWeather = (props) => {
          </div>
          <div className="current__temperature">
             {props.avgtemp && <p className="current__temperature --avgtemp">{Math.round(props.avgtemp) + "º"}</p>}
-            {props.mintemp && props.maxtemp && <p className="current__temperature --temp">{props.mintemp + "º ... " + props.maxtemp + "º"}</p>}
+            {props.mintemp && props.maxtemp && <p className="current__temperature --temp">{Math.round(props.mintemp) + "º ... " + Math.round(props.maxtemp) + "º"}</p>}
          </div>
          <div className="current__description">
             <div className="current__description__left">
@@ -21,8 +21,6 @@ const MainWeather = (props) => {
                {props.humidity && <p>{props.humidity + "%"}</p>}
                {props.description_text && <p>{props.description_text}</p>}
             </div>
-
-
          </div>
       </div>
    )

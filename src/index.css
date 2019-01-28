@@ -6,37 +6,32 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	margin:                  0;
 	padding:                 0;
-	/*text-shadow: 0px 0px 10px rgba(0,0,0,0.8);*/
 	display:                 grid;
-	grid-template-areas:     "header"
-							 "main"
-							 "footer";
-	grid-template-rows:      40px 5fr 40px;
+	grid-template-areas:     "header" "main" "footer";
+	grid-template-rows:      0.1fr 5fr 0.1fr;
 	grid-template-columns:   1fr;
-	font-size:               2vw;
 	height:                  100vh;
+	font-size:               2vw;
+	text-shadow: 			 0px 0px 10px rgba(0,0,0,0.8);
 	box-sizing:              border-box;
-	user-select: none;
+	user-select:             none;
 }
 
 .pageHeader {
-	grid-area: header;
+	grid-area: 		 header;
+	display: grid;
+	grid-template-areas: "logo search";
+	grid-template-rows: none;
+	grid-template-columns: 1.1fr 3fr;
+	grid-gap: 4px;
+	align-items: center;
+	text-transform:  uppercase;
+	color:           #ffffff;
+	background:      #067EB2;
 }
 
 .pageMain {
 	grid-area: main;
-}
-
-.pageFooter {
-	grid-area: footer;
-}
-
-footer {
-	background: #067EB2;
-	color:      #ffffff;
-}
-
-main {
 	background: rgba(6, 126, 178, 1);
 	background: -webkit-linear-gradient(left, rgba(6, 126, 178, 1) 19%, rgba(63, 138, 225, 0.93) 25%, rgba(0, 102, 235, 0.98) 67%, rgba(0, 102, 235, 1) 100%);
 	background: -o-linear-gradient(to right, rgba(0, 102, 235, 1) 2%, rgba(0, 102, 235, 0.88) 20%, rgba(6, 126, 178, 0.95) 50%);
@@ -44,73 +39,87 @@ main {
 	background: linear-gradient(to right, rgba(0, 102, 235, 1) 2%, rgba(0, 102, 235, 0.88) 20%, rgba(6, 126, 178, 0.95) 50%);
 }
 
-.pageHeader {
-	display:         flex;
-	justify-content: center;
-	align-items:     center;
-	text-transform:  uppercase;
-	color:           #ffffff;
-	background:      #067EB2;
+.pageFooter {
+	grid-area: footer;
+	background: #067EB2;
+	color:      #ffffff;
 }
 
 .header__search__input {
+	grid-area: search;
 	width:               50vw;
 	height:              4vh;
-	margin:              0 0 0 20px;
-	padding:             0 20px 0 20px;
+	margin:              10px 0 8px 20px;
+	padding:             0 10px 0 20px;
 	border:              none;
 	outline:             none;
 	border-radius:       4px;
+	position: relative;
 	background-image:    url("./img/icon/search (1).svg");
-	background-position: 5px 4px;
+	background-position:  1% 50%;
 	background-repeat:   no-repeat;
+	text-align: left;
+}
+
+.header__logo {
+	grid-area: logo;
+	margin: 10px 0 10px 0;
+	text-align: right;
 }
 
 .pageMain {
 	display:               grid;
 	grid-template-areas:   "country country"
-						   "current .";
-						   /*"day day"*/
-	grid-template-rows:    1fr 3fr;
+						   "current ."
+						   "day day";
+	grid-template-rows:    1fr 4fr;
 	grid-template-columns: 2fr 1.5fr;
 	align-items:           center;
 	text-align:            center;
 	color:                 #ffffff;
-	grid-gap:              5px;
 	background-color:      rgba(46, 45, 71, 0.6);
 }
 
+
+/*.earth {
+	grid-area: earth;
+	background-image: url("./img/map.png");
+	background-repeat: no-repeat;
+	height: 390px;
+	align-items: center;
+}*/
+
 .country {
-	grid-area: country;
-	margin: 0;
+	grid-area:  country;
 	background: url("./img/weatherImg/light-snow-day.jpg");
-	height: 100px;
+	height:     100%;
 }
 
 .current {
 	grid-area: current;
+	margin: 5px;
+	padding: 5px;
+	border-radius:         20px;
+	background-color:      rgba(46, 45, 71, 0.6);
+	display:               grid;
+	grid-template-areas:   "date date"
+						   "temp description";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows:    0.5fr 0.5fr;
 }
 
-/*.days {
-	!*background-color: rgba(46, 45, 71, 0.6);*!
-
-	grid-area: day;
-	border-radius: 20px;
-}*/
-
-.current {
-	border-radius:       20px;
-	background-color:    rgba(46, 45, 71, 0.6);
-	display: grid;
-	grid-template-areas: "date date"
-						 "temp description";
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 0.5fr 0.5fr;
+.days {
+	grid-area:       		day;
+	display: 				grid;
+	grid-template-areas:	"dayZ dayZ dayZ"
+						 	"dayZ dayZ dayZ";
+	grid-template-rows: 	repeat(2, 1fr);
+	grid-template-columns: 	1fr 1fr 1fr;
 }
 
 .current__date {
 	grid-area: date;
-	margin: 0;
+	margin:    0;
 }
 
 .current__temperature {
@@ -119,7 +128,7 @@ main {
 
 .current__description {
 	grid-area: description;
-	display: flex;
+	display:   flex;
 	flex-flow: row;
 }
 
@@ -131,43 +140,50 @@ main {
 	font-size: 2vw;
 }
 
-.current__temperature.--avgtemp{
-	 margin: 0;
-	 font-size: 8vw;
- }
+.--avgtemp {
+	margin:    0;
+	font-size: 8vw;
+}
 
-.current__temperature.--temp{
-	margin: 0;
+.--temp {
+	margin:    0;
 	font-size: 4vw;
 }
+.--avgtempmin {
+	margin:    0;
+	font-size: 3vw;
+}
 
-/*
+.--tempmin {
+	margin:    0;
+	font-size: 2vw;
+}
 
-.weekDay {
+.oneday {
 	display: grid;
-	grid-template-areas: 'weekDay_date' 'weekDay__description';
+	grid-template-areas: "date"
+						 "description";
 	grid-template-rows: 1fr;
 	grid-template-columns: 1fr;
+	border-radius:         20px;
+	background-color:      rgba(46, 45, 71, 0.6);
+	margin: 5px;
+	padding: 5px;
+
 }
 
-.weekDay_date {
-	grid-area: weekDay_date;
+.oneday__date {
+	grid-area: date;
 }
 
-.weekDay__description{
-	grid-area: weekDay__description;
+.oneday__description {
+	grid-area: description;
 }
-*/
 
-
-
-
-
-.loader{
-	position: fixed;
-	top: 50%;
-	left: 50%;
+.loader {
+	position:  fixed;
+	top:       50%;
+	left:      50%;
 	transform: translate(-50%, -50%);
-	color: darkslategray;
-
+	color:     darkslategray;
 }

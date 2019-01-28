@@ -7,6 +7,7 @@ export const parsing = (api_weather) => {
    const arrayWeather = api_weather.forecast.forecastday;
 
    const weatherWeek = [];
+
    const days = [];
 
    let location = {
@@ -26,6 +27,8 @@ export const parsing = (api_weather) => {
       description_code: parseImg(arrayWeather[0].day.condition.code)
    };
 
+
+
    weatherWeek.push(location);
    weatherWeek.push(current);
    weatherWeek.push(days);
@@ -44,7 +47,7 @@ export const parsing = (api_weather) => {
       const numOfDay = dateUTC.getDay();
       const day = dateUTC.getUTCDate();
 
-      if (today !== day) {
+      if (today) {
          dateDay += arrayWeather[i].date;
          avgtemp += Number(arrayWeather[i].day.avgtemp_c);
          maxtemp += Number(arrayWeather[i].day.maxtemp_c);
@@ -54,7 +57,7 @@ export const parsing = (api_weather) => {
          description_text = arrayWeather[i].day.condition.text;
          description_code = arrayWeather[i].day.condition.code;
 
-         if (itemsForCurrentDay !== 2) {
+         if (itemsForCurrentDay !== 1) {
             days.push({
                day: parseDays(numOfDay),
                dateDay: dateDay,
