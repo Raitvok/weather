@@ -79,6 +79,7 @@ class App extends Component {
                      mintemp={this.state.data[1].mintemp}
                      humidity={this.state.data[1].humidity}
                      description_text={this.state.data[1].description_text}
+                     visible_km={this.state.data[1].visible_km}
                   />
                   <div className="days">
                      <OneDay data={this.state.data}/>

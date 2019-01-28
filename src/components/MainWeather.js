@@ -14,12 +14,14 @@ const MainWeather = (props) => {
          </div>
          <div className="current__description">
             <div className="current__description__left">
-               {props.humidity && <p className="current__humidity">Humidity: </p>}
                {props.description_text && <p className="current__precipitation">Precipitation:</p>}
+               {props.humidity && <p className="current__humidity">Humidity: </p>}
+               {props.visible_km && <p className="current__precipitation">Visible:</p>}
             </div>
-            <div className="current__description__rigth">
-               {props.humidity && <p>{props.humidity + "%"}</p>}
+            <div className="current__description__right">
                {props.description_text && <p>{props.description_text}</p>}
+               {props.humidity && <p>{props.humidity + " %"}</p>}
+               {props.visible_km && <p>{props.visible_km + " km"}</p>}
             </div>
          </div>
       </div>

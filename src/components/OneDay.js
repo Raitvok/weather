@@ -9,13 +9,11 @@ const OneDay = (props) => {
                <div>{item.day}</div>
                <div>{item.dateDay}</div>
             </div>
-            <div className="oneday__description">
-               <div className="oneday__description --temp">
-                  <div className="oneday__description__temp --avgtempmin">{Math.round(item.avgtemp)}</div>
-                  {item.mintemp && item.maxtemp && <p className="oneday__description__temp --tempmin">{Math.round(item.mintemp) + "º ... " + Math.round(item.maxtemp) + "º"}</p>}
-               </div>
-               <div>{item.description_text}</div>
+            <div className="oneday__temperature --temp">
+               <div className="oneday__description__temp --avgtempmin">{Math.round(item.avgtemp)}</div>
+               {item.mintemp && item.maxtemp && <p className="oneday__description__temp --tempmin">{Math.round(item.mintemp) + "º ... " + Math.round(item.maxtemp) + "º"}</p>}
             </div>
+            <div className="oneday__description">{item.description_text}</div>
          </div>
       )
    }

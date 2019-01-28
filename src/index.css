@@ -7,14 +7,16 @@ body {
 	margin:                  0;
 	padding:                 0;
 	display:                 grid;
-	grid-template-areas:     "header" "main" "footer";
+	grid-template-areas:     "header"
+							 "main"
+							 "footer";
 	grid-template-rows:      0.1fr 5fr 0.1fr;
 	grid-template-columns:   1fr;
 	height:                  100vh;
-	font-size:               2vw;
-	text-shadow: 			 0px 0px 10px rgba(0,0,0,0.8);
 	box-sizing:              border-box;
 	user-select:             none;
+	text-shadow: 			 2px 2px 1px rgba(0,0,0,0.6);
+	white-space: 			 pre-wrap ;
 }
 
 .pageHeader {
@@ -45,6 +47,13 @@ body {
 	color:      #ffffff;
 }
 
+.header__logo {
+	grid-area: logo;
+	margin: 10px 0 10px 0;
+	text-align: right;
+	font-size: 2.5vw;
+}
+
 .header__search__input {
 	grid-area: search;
 	width:               50vw;
@@ -61,35 +70,21 @@ body {
 	text-align: left;
 }
 
-.header__logo {
-	grid-area: logo;
-	margin: 10px 0 10px 0;
-	text-align: right;
-}
-
 .pageMain {
 	display:               grid;
-	grid-template-areas:   "country country"
-						   "current ."
-						   "day day";
-	grid-template-rows:    1fr 4fr;
-	grid-template-columns: 2fr 1.5fr;
+	grid-template-areas:   "country country country"
+						   ". current ."
+						   "day day day";
+	grid-template-rows:    0.8fr 3fr 2fr;
+	grid-template-columns: 1fr 3fr 1fr;
 	align-items:           center;
 	text-align:            center;
 	color:                 #ffffff;
 	background-color:      rgba(46, 45, 71, 0.6);
 }
 
-
-/*.earth {
-	grid-area: earth;
-	background-image: url("./img/map.png");
-	background-repeat: no-repeat;
-	height: 390px;
-	align-items: center;
-}*/
-
 .country {
+	font-size: 2vw;
 	grid-area:  country;
 	background: url("./img/weatherImg/light-snow-day.jpg");
 	height:     100%;
@@ -98,26 +93,29 @@ body {
 .current {
 	grid-area: current;
 	margin: 5px;
-	padding: 5px;
+	padding: 10px;
 	border-radius:         20px;
 	background-color:      rgba(46, 45, 71, 0.6);
 	display:               grid;
 	grid-template-areas:   "date date"
 						   "temp description";
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows:    0.5fr 0.5fr;
+	grid-template-columns: 1fr 1.5fr;
+	grid-template-rows:    0.3fr 0.5fr;
+	font-size: 2vw;
 }
 
 .days {
 	grid-area:       		day;
 	display: 				grid;
-	grid-template-areas:	"dayZ dayZ dayZ"
-						 	"dayZ dayZ dayZ";
-	grid-template-rows: 	repeat(2, 1fr);
-	grid-template-columns: 	1fr 1fr 1fr;
+	grid-template-areas:	"dayZ dayZ dayZ dayZ"
+						 	" cur dayZ dayZ cur ";
+	grid-template-rows: 	1.5fr;
+	grid-template-columns: 	1fr 1fr 1fr 1fr 1fr 1fr;
+	padding: 10px;
 }
 
 .current__date {
+	font-size: 2.2vw;
 	grid-area: date;
 	margin:    0;
 }
@@ -127,9 +125,28 @@ body {
 }
 
 .current__description {
+	font-size: 1.8vw;
 	grid-area: description;
-	display:   flex;
-	flex-flow: row;
+	white-space: nowrap;
+	display: grid;
+	grid-template-areas: "left right";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+}
+
+.current__description__left {
+	grid-area: left;
+	text-align: end;
+}
+
+.current__description__right {
+	grid-area: right;
+	text-align: start;
+}
+
+.current__description__right,
+.current__description__left {
+	padding: 5px;
 }
 
 .current__date.--day {
@@ -162,18 +179,24 @@ body {
 .oneday {
 	display: grid;
 	grid-template-areas: "date"
+						 "temperature"
 						 "description";
-	grid-template-rows: 1fr;
+	grid-template-rows: 1fr 2fr 1fr;
 	grid-template-columns: 1fr;
 	border-radius:         20px;
 	background-color:      rgba(46, 45, 71, 0.6);
 	margin: 5px;
 	padding: 5px;
-
 }
 
 .oneday__date {
 	grid-area: date;
+	padding: 0 0 10px 0;
+}
+
+.oneday__temperature {
+	grid-area: temperature;
+	align-content: center;
 }
 
 .oneday__description {
@@ -185,5 +208,5 @@ body {
 	top:       50%;
 	left:      50%;
 	transform: translate(-50%, -50%);
-	color:     darkslategray;
+	color:     lightblue;
 }
