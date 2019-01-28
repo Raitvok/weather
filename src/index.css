@@ -112,6 +112,8 @@ body {
 	grid-template-rows: 	1.5fr;
 	grid-template-columns: 	1fr 1fr 1fr 1fr 1fr 1fr;
 	padding: 10px;
+	align-items: center;
+
 }
 
 .current__date {
@@ -209,4 +211,76 @@ body {
 	left:      50%;
 	transform: translate(-50%, -50%);
 	color:     lightblue;
+}
+@media all and (max-width: 1650px){
+	.pageMain {
+		display:               grid;
+		grid-template-areas:   "country country country"
+							   ". current ."
+							   "day day day";
+		grid-template-rows:    0.2fr 0.8fr 1fr;
+		grid-template-columns: 1fr 3fr 1fr;
+		align-items:           center;
+		text-align:            center;
+		color:                 #ffffff;
+		background-color:      rgba(46, 45, 71, 0.6);
+	}
+
+	.days {
+		grid-area:       		day;
+		display: 				grid;
+		grid-template-areas:	"dayZ dayZ"
+							  " dayZ dayZ";
+		grid-template-rows: 	1fr;
+		grid-template-columns: 	1fr 1fr 1fr;
+		padding: 10px;
+		align-items: center;
+	}
+
+}
+
+@media all and (max-width: 1150px){
+	.pageMain {
+		display:               grid;
+		grid-template-areas:   "country"
+							   "current"
+							   "day";
+		grid-template-rows:    0.5fr 0.5fr;
+		grid-template-columns: 1fr;
+		align-items:           center;
+		text-align:            center;
+		color:                 #ffffff;
+		background-color:      rgba(46, 45, 71, 0.6);
+	}
+
+	.days {
+		grid-area:       		day;
+		display: 				grid;
+		grid-template-areas:	"dayZ dayZ"
+							  "dayZ dayZ";
+		grid-template-rows: 	1fr;
+		grid-template-columns: 	1fr 1fr;
+		padding: 10px;
+	}
+
+	.oneday {
+		display: grid;
+		grid-template-areas: "date"
+				 "temperature"
+				 "description";
+		grid-template-rows: 1fr 1.5fr 0.8fr;
+		grid-template-columns: 1fr;
+		border-radius:         10px;
+		background-color:      rgba(46, 45, 71, 0.6);
+		margin: 5px;
+		padding: 5px;
+	}
+}
+
+@media all and (max-width: 800px){
+
+}
+
+@media all and (max-width: 590px){
+
 }

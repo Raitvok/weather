@@ -112,8 +112,35 @@ const parseDays = (param) => {
 
 const parseImg = (param) => {
    switch (param) {
-      case 1147: {
-         return "img1";
+      case 1198: {
+         return "Light freezing rain";
       }
+      case 1243: {
+         return "Moderate or heavy rain shower"
+      }
+      case 1003: {
+         return "Partly cloudy"
+      }
+      case 1258: {
+         return "Moderate or heavy snow showers"
+      }
+      case 1240: {
+         return "Light rain shower"
+      }
+      case 1183: {
+         return "Light rain"
+      }
+      case 1186: {
+         return "Moderate rain at times"
+      }
+/*      case : {
+         return ""
+      }
+      case : {
+         return ""
+      }
+      case : {
+         return ""
+      }*/
    }
 }

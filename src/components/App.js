@@ -3,7 +3,6 @@ import HeaderLogo from "./HeaderLogo"
 import HeaderSearch from "./HeaderSearch";
 import MainCountryName from "./MainCountryName";
 import MainWeather from "./MainWeather";
-//import Earth from "./Earth"
 import OneDay from "./OneDay";
 import Footer from "./Footer";
 import {parsing} from "./service"
@@ -28,7 +27,6 @@ class App extends Component {
       this.setState({
          data: parsing(api_weather)
       });
-
    }
 
    getWather = async (e) => {
@@ -42,8 +40,11 @@ class App extends Component {
          this.setState({
             data: parsing(api_weather)
          })
+      }else {
+         this.state({
+            data: parsing(api_weather)
+         })
       }
-
    };
 
    render() {
