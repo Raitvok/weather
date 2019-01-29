@@ -7,70 +7,36 @@ body {
 	margin:                  0;
 	padding:                 0;
 	display:                 grid;
-	grid-template-areas:     "header"
-							 "main"
-							 "footer";
+	grid-template-areas:     "header" "main" "footer";
 	grid-template-rows:      0.1fr 5fr 0.1fr;
 	grid-template-columns:   1fr;
 	height:                  100vh;
 	box-sizing:              border-box;
 	user-select:             none;
-	text-shadow: 			 2px 2px 1px rgba(0,0,0,0.6);
-	white-space: 			 pre-wrap ;
+	text-shadow:             2px 2px 1px rgba(0, 0, 0, 0.6);
+	white-space:             pre-wrap;
 }
 
 .pageHeader {
-	grid-area: 		 header;
-	display: grid;
-	grid-template-areas: "logo search";
-	grid-template-rows: none;
+	grid-area:             header;
+	display:               grid;
+	grid-template-areas:   "logo search";
+	grid-template-rows:    none;
 	grid-template-columns: 1.1fr 3fr;
-	grid-gap: 4px;
-	align-items: center;
-	text-transform:  uppercase;
-	color:           #ffffff;
-	background:      #067EB2;
+	grid-gap:              4px;
+	align-items:           center;
+	text-transform:        uppercase;
+	color:                 #ffffff;
+	background:            #067EB2;
 }
 
 .pageMain {
-	grid-area: main;
+	grid-area:  main;
 	background: rgba(6, 126, 178, 1);
 	background: -webkit-linear-gradient(left, rgba(6, 126, 178, 1) 19%, rgba(63, 138, 225, 0.93) 25%, rgba(0, 102, 235, 0.98) 67%, rgba(0, 102, 235, 1) 100%);
 	background: -o-linear-gradient(to right, rgba(0, 102, 235, 1) 2%, rgba(0, 102, 235, 0.88) 20%, rgba(6, 126, 178, 0.95) 50%);
 	background: -ms-linear-gradient(to right, rgba(0, 102, 235, 1) 2%, rgba(0, 102, 235, 0.88) 20%, rgba(6, 126, 178, 0.95) 50%);
 	background: linear-gradient(to right, rgba(0, 102, 235, 1) 2%, rgba(0, 102, 235, 0.88) 20%, rgba(6, 126, 178, 0.95) 50%);
-}
-
-.pageFooter {
-	grid-area: footer;
-	background: #067EB2;
-	color:      #ffffff;
-}
-
-.header__logo {
-	grid-area: logo;
-	margin: 10px 0 10px 0;
-	text-align: right;
-	font-size: 2.5vw;
-}
-
-.header__search__input {
-	grid-area: search;
-	width:               50vw;
-	height:              4vh;
-	margin:              10px 0 8px 20px;
-	padding:             0 10px 0 20px;
-	border:              none;
-	outline:             none;
-	border-radius:       4px;
-	position: relative;
-	background-image:    url("./img/icon/search (1).svg");
-	background-position:  1% 50%;
-	background-repeat:   no-repeat;
-	text-align: left;
-}
-
-.pageMain {
 	display:               grid;
 	grid-template-areas:   "country country country"
 						   ". current ."
@@ -83,17 +49,46 @@ body {
 	background-color:      rgba(46, 45, 71, 0.6);
 }
 
+.pageFooter {
+	grid-area:  footer;
+	background: #067EB2;
+	color:      #ffffff;
+}
+
+.header__logo {
+	grid-area:  logo;
+	margin:     10px 0 10px 0;
+	text-align: right;
+	font-size:  2.5vw;
+}
+
+.header__search__input {
+	grid-area:           search;
+	width:               50vw;
+	height:              4vh;
+	margin:              10px 0 8px 20px;
+	padding:             0 10px 0 20px;
+	border:              none;
+	outline:             none;
+	border-radius:       4px;
+	position:            relative;
+	background-image:    url("img/icon/search.svg");
+	background-position: 1% 50%;
+	background-repeat:   no-repeat;
+	text-align:          left;
+}
+
 .country {
-	font-size: 2vw;
+	font-size:  2vw;
 	grid-area:  country;
 	background: url("./img/weatherImg/light-snow-day.jpg");
 	height:     100%;
 }
 
 .current {
-	grid-area: current;
-	margin: 5px;
-	padding: 10px;
+	grid-area:             current;
+	margin:                5px;
+	padding:               10px;
 	border-radius:         20px;
 	background-color:      rgba(46, 45, 71, 0.6);
 	display:               grid;
@@ -101,19 +96,18 @@ body {
 						   "temp description";
 	grid-template-columns: 1fr 1.5fr;
 	grid-template-rows:    0.3fr 0.5fr;
-	font-size: 2vw;
+	font-size:             2vw;
 }
 
 .days {
-	grid-area:       		day;
-	display: 				grid;
-	grid-template-areas:	"dayZ dayZ dayZ dayZ"
-						 	" cur dayZ dayZ cur ";
-	grid-template-rows: 	1.5fr;
-	grid-template-columns: 	1fr 1fr 1fr 1fr 1fr 1fr;
-	padding: 10px;
-	align-items: center;
-
+	grid-area:             day;
+	display:               grid;
+	grid-template-areas:   "dayZ dayZ dayZ dayZ"
+						   " cur dayZ dayZ cur ";
+	grid-template-rows:    1.5fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	padding:               10px;
+	align-items:           center;
 }
 
 .current__date {
@@ -127,23 +121,25 @@ body {
 }
 
 .current__description {
-	font-size: 1.8vw;
-	grid-area: description;
-	white-space: nowrap;
-	display: grid;
-	grid-template-areas: "left right";
+	font-size:             1.8vw;
+	grid-area:             description;
+	white-space:           nowrap;
+	display:               grid;
+	grid-template-areas:   "left right";
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr;
+	grid-template-rows:    1fr;
 }
 
 .current__description__left {
-	grid-area: left;
+	grid-area:  left;
 	text-align: end;
+
 }
 
 .current__description__right {
-	grid-area: right;
+	grid-area:  right;
 	text-align: start;
+
 }
 
 .current__description__right,
@@ -168,9 +164,10 @@ body {
 	margin:    0;
 	font-size: 4vw;
 }
+
 .--avgtempmin {
-	margin:    0;
-	font-size: 3vw;
+	margin:       0;
+	font-size:    3vw;
 }
 
 .--tempmin {
@@ -178,31 +175,88 @@ body {
 	font-size: 2vw;
 }
 
+.current__temperature.--avgtemp:before {
+	position:          relative;
+	display:           inline;
+	padding:           20px;
+	top:               0.7em;
+	content:           "";
+	background-image:  url("img/icon/temperature.svg");
+	background-repeat: no-repeat;
+}
+
+.current__temperature.--temp:before,
+.current__temperature.--temp:after{
+	position:          relative;
+	display:           inline;
+	padding:           15px;
+	top:               0.7em;
+	content:           "";
+	background-repeat: no-repeat;
+}
+
+.current__temperature.--temp:before {
+	background-image:  url("img/icon/moon.svg");
+	margin-right:      5px;
+}
+
+.current__temperature.--temp:after {
+	background-image:  url("img/icon/sun.svg");
+	margin-left: 5px;
+}
+
 .oneday {
-	display: grid;
-	grid-template-areas: "date"
-						 "temperature"
-						 "description";
-	grid-template-rows: 1fr 2fr 1fr;
+	display:               grid;
+	grid-template-areas:   "date" "temperature" "description";
+	grid-template-rows:    1fr 2fr 1fr;
 	grid-template-columns: 1fr;
 	border-radius:         20px;
 	background-color:      rgba(46, 45, 71, 0.6);
-	margin: 5px;
-	padding: 5px;
+	margin:                5px;
+	padding:               5px;
 }
 
 .oneday__date {
 	grid-area: date;
-	padding: 0 0 10px 0;
+	padding:   0 0 10px 0;
 }
 
 .oneday__temperature {
-	grid-area: temperature;
+	grid-area:     temperature;
 	align-content: center;
 }
 
 .oneday__description {
 	grid-area: description;
+}
+
+.oneday__description__temp.--avgtempmin:before {
+	position:          relative;
+	display:           inline;
+	padding:           12px;
+	top:               0.7em;
+	content:           "";
+	background-image:  url("img/icon/temperature.svg");
+	background-repeat: no-repeat;
+}
+
+.oneday__description__temp.--tempmin:before,
+.oneday__description__temp.--tempmin:after {
+	position:          relative;
+	display:           inline;
+	padding:           10px;
+	top:               0.7em;
+	content:           "";
+	background-repeat: no-repeat;
+}
+
+.oneday__description__temp.--tempmin:before {
+	background-image:  url("img/icon/moon.svg");
+	margin-right:      5px;
+}
+.oneday__description__temp.--tempmin:after {
+	background-image:  url("img/icon/sun.svg");
+	margin-left: 5px;
 }
 
 .loader {
@@ -212,75 +266,154 @@ body {
 	transform: translate(-50%, -50%);
 	color:     lightblue;
 }
-@media all and (max-width: 1650px){
+
+@media all and (max-width: 1650px) {
 	.pageMain {
-		display:               grid;
-		grid-template-areas:   "country country country"
-							   ". current ."
-							   "day day day";
 		grid-template-rows:    0.2fr 0.8fr 1fr;
-		grid-template-columns: 1fr 3fr 1fr;
-		align-items:           center;
-		text-align:            center;
-		color:                 #ffffff;
-		background-color:      rgba(46, 45, 71, 0.6);
 	}
 
 	.days {
-		grid-area:       		day;
-		display: 				grid;
-		grid-template-areas:	"dayZ dayZ"
-							  " dayZ dayZ";
-		grid-template-rows: 	1fr;
-		grid-template-columns: 	1fr 1fr 1fr;
-		padding: 10px;
-		align-items: center;
+		grid-template-rows:    1fr;
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 
 }
 
-@media all and (max-width: 1150px){
+@media all and (max-width: 1150px) {
 	.pageMain {
-		display:               grid;
-		grid-template-areas:   "country"
-							   "current"
-							   "day";
-		grid-template-rows:    0.5fr 0.5fr;
-		grid-template-columns: 1fr;
-		align-items:           center;
-		text-align:            center;
-		color:                 #ffffff;
-		background-color:      rgba(46, 45, 71, 0.6);
+		grid-template-areas:   "country country country"
+							   ". current ."
+							   ". day .";
+		grid-template-columns: 0.8fr 4fr 0.8fr;
+		grid-template-rows:    0.2fr 0.5fr 0.5fr;
+	}
+
+	.current {
+		margin:                15px 15px;
+		border-radius:         15px;
+	}
+
+	.pageMain,
+	.header__logo,
+	.oneday,
+	.oneday__description__temp,
+	.country,
+	.current {
+		font-size: 3vh;
 	}
 
 	.days {
-		grid-area:       		day;
-		display: 				grid;
-		grid-template-areas:	"dayZ dayZ"
-							  "dayZ dayZ";
-		grid-template-rows: 	1fr;
-		grid-template-columns: 	1fr 1fr;
-		padding: 10px;
+		grid-template-rows:    0.8fr;
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 
 	.oneday {
-		display: grid;
-		grid-template-areas: "date"
-				 "temperature"
-				 "description";
-		grid-template-rows: 1fr 1.5fr 0.8fr;
-		grid-template-columns: 1fr;
+		grid-template-rows:    1fr 1.5fr 0.8fr;
 		border-radius:         10px;
-		background-color:      rgba(46, 45, 71, 0.6);
-		margin: 5px;
-		padding: 5px;
+	}
+
+	.current__temperature.--avgtemp:before {
+		padding:           15px;
+	}
+
+	.current__temperature.--temp:before,
+	.current__temperature.--temp:after {
+		padding:           10px;
+	}
+
+	.oneday__description__temp.--tempmin:before,
+	.oneday__description__temp.--tempmin:after {
+		padding:           8px;
+	}
+
+	.oneday__description__temp.--tempmin:before {
+		background-image:  url("img/icon/moon.svg");
+		margin-right:      5px;
+	}
+	.oneday__description__temp.--tempmin:after {
+		background-image:  url("img/icon/sun.svg");
+		margin-left: 5px;
 	}
 }
 
-@media all and (max-width: 800px){
+@media all and (max-width: 850px) {
+	.pageMain,
+	.header__logo,
+	.oneday,
+	.oneday__description__temp,
+	.country,
+	.current {
+		font-size: 2.5vh;
+	}
+
+	.pageMain {
+		grid-template-columns: 0.8fr 4fr 0.8fr;
+		grid-template-rows:    0.16fr 0.5fr 0.5fr;
+	}
+
+	.days {
+		grid-template-rows:    0.8fr;
+		grid-template-columns: 1fr 1fr;
+	}
 
 }
 
-@media all and (max-width: 590px){
 
+@media all and (max-width: 650px) {
+	.pageMain,
+	.header__logo,
+	.oneday,
+	.oneday__description__temp,
+	.country,
+	.current {
+		font-size: 2.5vh;
+	}
+
+
+	.pageMain {
+		grid-template-columns: 0.8fr 4fr 0.8fr;
+		grid-template-rows:    0.4fr 0.4fr;
+	}
+
+	.days {
+		grid-template-rows:    0.8fr;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.current__temperature.--avgtemp:before {
+		padding:           10px;
+	}
+
+	.current__temperature.--temp:before,
+	.current__temperature.--temp:after {
+		padding:           8px;
+	}
+
+	.oneday__description__temp.--avgtempmin:before {
+		padding: 10px;
+	}
+
+	.oneday__description__temp.--tempmin:before,
+	.oneday__description__temp.--tempmin:after {
+		padding:           6px;
+	}
+}
+
+@media all and (max-width: 450px) {
+	.pageMain,
+	.header__logo,
+	.oneday,
+	.oneday__description__temp,
+	.country,
+	.current {
+		font-size: 2vh;
+	}
+	.oneday,
+	.oneday__description__temp {
+		font-size: 3vh;
+	}
+	.days {
+		grid-template-rows:    0.8fr;
+		grid-template-columns: 1fr 1fr;
+	}
 }

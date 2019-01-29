@@ -71,7 +71,7 @@ class App extends Component {
                      country={this.state.data[0].country}
                      code={this.state.data[1].description_code}
                   />
-                  {/*<Earth/>*/}
+
                   <MainWeather
                      day={this.state.data[1].day}
                      dateDay={this.state.data[1].dateDay}
@@ -79,9 +79,12 @@ class App extends Component {
                      maxtemp={this.state.data[1].maxtemp}
                      mintemp={this.state.data[1].mintemp}
                      humidity={this.state.data[1].humidity}
+                     cloud={this.state.data[1].cloud}
+                     feelslike={this.state.data[1].feelslike}
                      description_text={this.state.data[1].description_text}
                      visible_km={this.state.data[1].visible_km}
                   />
+
                   <div className="days">
                      <OneDay data={this.state.data}/>
                   </div>

@@ -19,15 +19,18 @@ export const parsing = (api_weather) => {
       dateDay: arrayWeather[0].date,
       day: parseDays(date.getDay()),
       maxtemp: Math.round(arrayWeather[0].day.maxtemp_c),
-      avgtemp: Math.round(arrayWeather[0].day.avgtemp_c),
+      avgtemp: Math.round(api_weather.current.temp_c),
       mintemp: Math.round(arrayWeather[0].day.mintemp_c),
-      humidity: Math.round(arrayWeather[0].day.avghumidity),
-      visible_km: Math.round(Number(arrayWeather[0].day.avgvis_km)),
-      description_text: arrayWeather[0].day.condition.text,
-      description_code: parseImg(arrayWeather[0].day.condition.code)
+      humidity: Math.round(api_weather.current.humidity),
+      cloud: Math.round(api_weather.current.cloud),
+      visible_km: Math.round(Number(api_weather.current.vis_km)),
+      description_text: api_weather.current.condition.text,
+      description_code: parseImg(api_weather.current.condition.code),
+      feelslike: api_weather.current.feelslike_c,
+
    };
 
-
+   console.log(api_weather);
 
    weatherWeek.push(location);
    weatherWeek.push(current);
@@ -45,7 +48,6 @@ export const parsing = (api_weather) => {
    for (let i = 1; i < arrayWeather.length; i++) {
       const dateUTC = new Date(arrayWeather[i].date);
       const numOfDay = dateUTC.getDay();
-      const day = dateUTC.getUTCDate();
 
       if (today) {
          dateDay += arrayWeather[i].date;
@@ -80,7 +82,6 @@ export const parsing = (api_weather) => {
          }
       }
    }
-
    return weatherWeek;
 };
 
@@ -108,6 +109,7 @@ const parseDays = (param) => {
          return "Saturday";
       }
    }
+
 };
 
 const parseImg = (param) => {
@@ -132,6 +134,9 @@ const parseImg = (param) => {
       }
       case 1186: {
          return "Moderate rain at times"
+      }
+      case 1147: {
+         return "Freezing fog"
       }
 /*      case : {
          return ""
