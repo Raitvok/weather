@@ -81,7 +81,7 @@ body {
 .country {
 	font-size:  2vw;
 	grid-area:  country;
-	background: url("./img/weatherImg/light-snow-day.jpg");
+	background: url("img/weatherImg/light-snow-day.jpg");
 	height:     100%;
 }
 
@@ -357,7 +357,6 @@ body {
 	}
 
 }
-
 
 @media all and (max-width: 650px) {
 	.pageMain,

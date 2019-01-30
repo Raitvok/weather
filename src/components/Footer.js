@@ -3,7 +3,7 @@ import React from "react";
 const Footer =()=> {
   return (
     <footer className="pageFooter">
-      there is a footer
+      where is a footer??
     </footer>
   )
 };
