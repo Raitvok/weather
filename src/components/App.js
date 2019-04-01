@@ -43,18 +43,18 @@ class App extends Component {
             })
          }
       }
-      // const api_call = await fetch(`${APIXU_URL}${APIXU_KEY}&q=${CITY}&days=${DAYS}`);
-      // const api_weather = await api_call.json();
-      //
-      // if (CITY) {
-      //    this.setState({
-      //       data: parsing(api_weather)
-      //    })
-      // }else {
-      //    this.state({
-      //       data: parsing(api_weather)
-      //    })
-      // }
+      const api_call = await fetch(`${APIXU_URL}${APIXU_KEY}&q=${CITY}&days=${DAYS}`);
+      const api_weather = await api_call.json();
+
+      if (CITY) {
+         this.setState({
+            data: parsing(api_weather)
+         })
+      }else {
+         this.state({
+            data: parsing(api_weather)
+         })
+      }
    };
 
    render() {
